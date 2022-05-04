@@ -18,9 +18,14 @@ namespace learnit
 
         static void MoveShots()
         {   
-            string verzeichnis_screenshots = new string("C:\\Users\\PPfrang\\Pictures\\Screenshots");
-            string verzeichnis_vitero = new string("C:\\Users\\PPfrang\\Desktop\\vitero Dateien");
-            string viterodatum = new string("C:\\Users\\PPfrang\\Desktop\\vitero Dateien\\"); 
+            string verzeichnis_screenshots = new string("C:\\Users\\_username_\\Pictures\\Screenshots");
+            // Ursprungsverzeichnis der Screenshots, _username_ muss auf jeden Fall angepasst werden
+
+            string verzeichnis_vitero = new string("C:\\Users\\_username_\\Desktop\\vitero Dateien");
+            string viterodatum = new string("C:\\Users\\_username_\\Desktop\\vitero Dateien\\"); 
+            // Für die alte Vitero/Viona-Platform, _username_ auch anpassen
+
+
             int counter = 0;
 
             if (Directory.Exists(verzeichnis_screenshots))
@@ -72,7 +77,7 @@ namespace learnit
                     Console.WriteLine(zielverzeichnis);
 
                     //      Dödelcounter zum limitieren
-                    if (counter==100)
+                    if (counter==1000)
                     {
                         break;
                     }
