@@ -22,11 +22,11 @@ namespace learnit
             // Ursprungsverzeichnis der Screenshots, _username_ muss auf jeden Fall angepasst werden
 
             string verzeichnis_vitero = new string("C:\\Users\\_username_\\Desktop\\vitero Dateien");
-            string viterodatum = new string("C:\\Users\\_username_\\Desktop\\vitero Dateien\\"); 
-            // Für die alte Vitero/Viona-Platform, _username_ auch anpassen
+            string datum_ordner = new string("C:\\Users\\_username_\\Desktop\\vitero Dateien\\"); 
+            // Für die alte Vitero/Viona-Platform, _username_ auch anpassen, evtl auch Pfad
 
 
-            int counter = 0;
+            int counter = 0;        // Dödelcounter zum evt. limitieren
 
             if (Directory.Exists(verzeichnis_screenshots))
                 {
@@ -39,21 +39,21 @@ namespace learnit
                     counter += 1;
                     Console.WriteLine(datei.Length+"  "+datei);
                     Console.WriteLine(datei.LastIndexOf("\\"));
-                    string bild = (datei.Substring(38,21));         // Dateiname vom Screenshot
-                    Console.WriteLine(bild);
+                    string screenshot = (datei.Substring(38,21));         // Dateiname vom Screenshot
+                    Console.WriteLine(screenshot);
                     //= Console.WriteLine(datei.Substring(datei.LastIndexOf("\\") + 1, 21));
 
                     //      Datumsstempel aus CreationTime erzeugen
                     DateTime erstellt =  File.GetCreationTime(datei);
-                    string fecha = erstellt.ToShortDateString();
-                    Console.WriteLine(fecha);
-                    Console.WriteLine(fecha.Length);
-                    string datumsstempel = fecha.Substring(6, 4) + fecha.Substring(3, 2) + fecha.Substring(0, 2);
-                    //Console.WriteLine(fecha.Substring(6,4)+fecha.Substring(3,2)+fecha.Substring(0,2));
+                    string erstelldatum = erstellt.ToShortDateString();
+                    Console.WriteLine(erstelldatum);
+                    Console.WriteLine(erstelldatum.Length);
+                    string datumsstempel = erstelldatum.Substring(6, 4) + erstelldatum.Substring(3, 2) + erstelldatum.Substring(0, 2);
+                    //Console.WriteLine(erstelldatum.Substring(6,4)+erstelldatum.Substring(3,2)+erstelldatum.Substring(0,2));
                     Console.WriteLine(datumsstempel);
 
                     //      Zielpfad anhand Datumsstempel
-                    string zielverzeichnis = viterodatum +  datumsstempel;
+                    string zielverzeichnis = datum_ordner +  datumsstempel;
 
                     //      Erstellung Verzeichnis, falls nicht existent
                     if  (!(Directory.Exists(zielverzeichnis)))
@@ -67,7 +67,7 @@ namespace learnit
                         Console.WriteLine("Yes");
 
                         //      Zielpfad inklusive Dateiname
-                        string dateiimzielverzeichnis = zielverzeichnis +"\\"+ bild;
+                        string dateiimzielverzeichnis = zielverzeichnis +"\\"+ screenshot;
                         Console.WriteLine(dateiimzielverzeichnis);
                         Console.WriteLine(datei);
                         File.Move(datei, dateiimzielverzeichnis);
